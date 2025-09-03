@@ -1,5 +1,5 @@
 // Replace with your real OneSignal App ID after creating it in OneSignal dashboard
-const ONE_SIGNAL_APP_ID = "YOUR-ONESIGNAL-APP-ID";
+const ONE_SIGNAL_APP_ID = "f5d3631f-b0fd-46f8-8f75-8bcc9aa710d3";
 
 window.OneSignal = window.OneSignal || [];
 OneSignal.push(function() {
