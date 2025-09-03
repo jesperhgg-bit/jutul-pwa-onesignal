@@ -16,7 +16,7 @@ const unsubBtn = document.getElementById('btn-unsub');
 
 async function renderStatus() {
   try {
-    const enabled = await OneSignal.isPushNotificationsEnabled();
+    const enabled = await OneSignal.isPushNotificationsEnabled(); // <- stor S
     statusEl.textContent = enabled ? 'Varsler er AKTIVERT ✓' : 'Varsler er ikke aktivert.';
   } catch (e) {
     statusEl.textContent = 'Push ikke støttet: ' + e.message;
@@ -25,7 +25,7 @@ async function renderStatus() {
 
 subBtn?.addEventListener('click', async () => {
   try {
-    await OneSignal.registerForPushNotifications();
+    await OneSignal.registerForPushNotifications(); // <- stor S
     await renderStatus();
   } catch (e) {
     statusEl.textContent = 'Kunne ikke aktivere varsler: ' + e.message;
@@ -34,7 +34,7 @@ subBtn?.addEventListener('click', async () => {
 
 unsubBtn?.addEventListener('click', async () => {
   try {
-    await OneSignal.setSubscription(false);
+    await OneSignal.setSubscription(false); // <- stor S
     await renderStatus();
   } catch (e) {
     statusEl.textContent = 'Feil ved deaktivering: ' + e.message;
