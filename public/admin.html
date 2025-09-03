@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jutul Hockey – Admin</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <meta name="theme-color" content="#285034">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <header>
+    <img src="/assets/img/jutul-logo.png" alt="Jutul logo">
+    <h1>JUTUL HOCKEY – Admin</h1>
+  </header>
+  <main>
+    <div class="card">
+      <h2>Send push-varsel</h2>
+      <label for="title">Tittel</label>
+      <input id="title" type="text" placeholder="F.eks. Kamp i morgen!">
+      <label for="body">Melding</label>
+      <textarea id="body" rows="4" placeholder="Detaljer om tidspunkt, sted, etc."></textarea>
+      <label for="url">Lenke (valgfritt)</label>
+      <input id="url" type="text" placeholder="/ eller full URL">
+      <div class="row" style="margin-top:12px">
+        <button id="send" class="btn-green">Send varsel (alle abonnenter)</button>
+      </div>
+      <p id="out" class="small"></p>
+    </div>
+  </main>
+  <script>
+  async function call(path, payload){
+    const res = await fetch('/.netlify/functions/onesignal-send', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    const txt = await res.text();
+    return {ok:res.ok, txt};
+  }
+  document.getElementById('send').addEventListener('click', async () => {
+    const title = document.getElementById('title').value.trim();
+    const body = document.getElementById('body').value.trim();
+    const url = document.getElementById('url').value.trim() || '/';
+    const out = document.getElementById('out');
+    if (!title || !body){ out.textContent = 'Fyll inn tittel og melding.'; return; }
+    out.textContent = 'Sender…';
+    const r = await call('onesignal-send', { title, body, url });
+    out.textContent = r.ok ? 'OK: ' + r.txt : 'Feil: ' + r.txt;
+  });
+  </script>
+</body>
+</html>

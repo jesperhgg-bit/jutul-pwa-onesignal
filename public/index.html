@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Jutul Hockey</title>
+  <link rel="manifest" href="/manifest.json"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+  <meta name="theme-color" content="#285034"/>
+  <link rel="stylesheet" href="/css/styles.css"/>
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
+</head>
+<body>
+  <header>
+    <img src="/assets/img/jutul-logo.png" alt="Jutul logo"/>
+    <h1>JUTUL HOCKEY</h1>
+  </header>
+  <main>
+    <div class="card">
+      <p id="status">Sjekker status…</p>
+      <div class="row">
+        <button id="btn-sub" class="btn-green">Aktiver varsler</button>
+        <button id="btn-unsub" class="btn-red">Deaktiver varsler</button>
+      </div>
+      <p class="small">På iPhone må appen åpnes fra Hjem‑skjerm‑ikonet for å motta push.</p>
+    </div>
+    <div class="card">
+      <h2>Om appen</h2>
+      <p>Dette er Jutul Hockey sin PWA (web‑app). Installer på hjemskjermen for rask tilgang.</p>
+    </div>
+  </main>
+  <footer>© IL Jutul Hockey</footer>
+  <script src="/app.js"></script>
+</body>
+</html>
