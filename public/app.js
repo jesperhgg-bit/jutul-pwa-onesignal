@@ -1,3 +1,4 @@
+// Din OneSignal App ID
 const ONE_SIGNAL_APP_ID = "f5d3631f-b0fd-46f8-8f75-8bcc9aa710d3";
 
 window.OneSignal = window.OneSignal || [];
@@ -9,9 +10,9 @@ OneSignal.push(function () {
   });
 });
 
-const statusEl  = document.getElementById('status');
-const subBtn    = document.getElementById('btn-sub');
-const unsubBtn  = document.getElementById('btn-unsub');
+const statusEl = document.getElementById('status');
+const subBtn   = document.getElementById('btn-sub');
+const unsubBtn = document.getElementById('btn-unsub');
 
 async function renderStatus() {
   try {
